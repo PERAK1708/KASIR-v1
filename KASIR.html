@@ -1,0 +1,47 @@
+<h2>Pesanan Masuk</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nomor Meja</th>
+      <th>Nama Pemesan</th>
+      <th>Pembayaran</th>
+      <th>Detail</th>
+      <th>Total</th>
+      <th>Status</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody id="orders"></tbody>
+</table>
+
+<br>
+
+<h2>Pesanan Disetujui</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Meja</th>
+      <th>Metode</th>
+      <th>Total</th>
+      <th>Waktu</th>
+      <th>Nota</th>
+    </tr>
+  </thead>
+  <tbody id="approvedOrders"></tbody>
+</table>
+
+<div id="detailModal" class="modal">
+  <div class="modal-box">
+    <h3>Detail Pesanan</h3>
+    <div id="modalContent"></div>
+    <button class="btn-close" onclick="closeModal()">Tutup</button>
+  </div>
+</div>
+
+<!-- 🔥 JS & CSS HANYA DI PAGE INI -->
+<link rel="stylesheet" href="kasir.css">
+<script type="module" src="../firebase.js"></script>
+<script type="module" src="kasir.js"></script>
