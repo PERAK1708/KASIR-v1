@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mr. Resto POS - Halaman Kasir</title>
+  <link rel="stylesheet" href="kasir.css" />
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="kasir.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2 class="brand">RESTO BIADAP</h2>
+      <ul>
+        <li class="home active">Home</li>
+        <li class="data">Data</li>
+        <li class="menu">Menu & Stock</li>
+        <li class="inventori">Inventori</li>
+        <li class="transaksi">Transaksi</li>
+        <li class="penjualan">Penjualan</li>
+        <li class="keuangan">Keuangan</li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT UTAMA -->
+    <main class="content">
+      <div class="header">
+        <h1>RESTO PARA BIADAP</h1>
+      </div>
+
+      <div id="page-content">
+
+        <!-- DASHBOARD -->
+        <div class="dashboard">
+          <div class="card" onclick="openFeature('Cashier')">🛒<span>Cashier</span></div>
+          <div class="card" onclick="openFeature('Kitchen')">🍳<span>Kitchen</span></div>
+          <div class="card">📅<span>Booked</span></div>
+          <div class="card">🍽️<span>Table</span></div>
+          <div class="card">🚚<span>Delivery</span></div>
+        </div>
+
+        <!-- KONTEN KASIR -->
+        <section class="kasir-content">
+
+          <h2>Pesanan Masuk</h2>
+          <table id="orderList">
+            <thead>
+              <tr>
+                <th>Nomor Meja</th>
+                <th>Nama Pemesan</th>
+                <th>Metode Pembayaran</th>
+                <th>Rincian Pesanan</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="orders"></tbody>
+          </table>
+
+          <br><br>
+
+          <h2>Pesanan Disetujui</h2>
+          <table id="approvedList">
+            <thead>
+              <tr>
+                <th>ID Pesanan</th>
+                <th>No Meja</th>
+                <th>Metode</th>
+                <th>Total</th>
+                <th>Waktu</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody id="approvedOrders"></tbody>
+          </table>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- MODAL POPUP -->
+  <div id="detailModal" class="modal">
+    <div class="modal-box">
+      <h3>Detail Pesanan</h3>
+      <div id="modalContent"></div>
+      <button class="btn-close" onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+
+</body>
+</html>

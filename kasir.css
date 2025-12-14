@@ -1,28 +1,126 @@
 /* ======== GLOBAL STYLE ======== */
 body {
   font-family: "Poppins", sans-serif;
-  padding: 20px;
-  background-image: url('aset/latar\ kasir.jpg'); /* Ganti URL_GAMBAR_DI_ATAS dengan salah satu link di atas */
+  margin: 0;
+  padding: 0;
+  background-image: url('aset/latar kasir.jpg');
   color: #333;
 }
 
-h2 {
+/* ======== CONTAINER FLEX ======== */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ======== SIDEBAR ======== */
+.sidebar {
+  width: 220px;
+  background: #add1d4;
+  color: #0a0202;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.sidebar .brand {
+  font-size: 24px;
+  font-weight: 700;      /* Tulisan tebal */
+  margin-bottom: 30px;
+  text-align: center;    /* Rata tengah */
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 12px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+  color: #fff;
+  font-weight: 700;      /* Tulisan tebal */
+  text-align: center;    /* Rata tengah */
+}
+
+/* Warna khusus untuk tiap menu */
+.sidebar ul li.home { background: #99c5bc; color:#000; }        /* Hijau toska */
+.sidebar ul li.data { background: #3498db; color:#faeded; }        /* Biru */
+.sidebar ul li.menu { background: #9b59b6; color:#f1ecec; }        /* Ungu */
+.sidebar ul li.inventori { background: #e67e22; color:#f7e8e8; }   /* Oranye */
+.sidebar ul li.transaksi { background: #e74c3c; color:#f7f3f3; }   /* Merah */
+.sidebar ul li.penjualan { background: #f1c40f; color:#000; } /* Kuning */
+.sidebar ul li.keuangan { background: #34495e; color:#f6f0f0; }  /* Abu gelap */
+
+/* Hover efek (lebih terang saat mouse over) */
+.sidebar ul li:hover { filter: brightness(1.2); }
+
+/* Jika menu aktif, beri border atau efek */
+.sidebar ul li.active {
+  border: 2px solid #fff;
+}
+
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background: #62ccac;
+  color: #100101;
+}
+
+/* ======== CONTENT ======== */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: rgba(255,255,255,0.95);
+  overflow-x: auto;
+}
+
+.header h1 {
+  margin: 0 0 20px 0;
+  font-size: 28px;
   text-align: center;
+}
+
+/* ======== DASHBOARD ======== */
+.dashboard {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
   margin-bottom: 25px;
-  font-size: 26px;
-  font-weight: 700;
-  color: #e3ebf1;
-  background: rgb(5, 30, 71);
+}
+
+.dashboard .card {
+  flex: 1;
+  min-width: 120px;
+  background: #cce24f;
+  color: rgb(7, 0, 0);
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dashboard .card span {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
 }
 
 /* ======== TABLE STYLE ======== */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: rgb(204, 215, 117);
+  background: rgb(229, 231, 210);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
 }
 
 th {
@@ -52,23 +150,12 @@ button {
   transition: 0.25s ease;
 }
 
-button:hover {
-  transform: scale(1.05);
-}
+button:hover { transform: scale(1.05); }
 
-.btn-approve {
-  background: #28a745;
-}
+.btn-approve { background: #28a745; }
+.btn-edit { background: #006ee6; }
+.btn-cancel { background: #d63031; }
 
-.btn-edit {
-  background: #006ee6;
-}
-
-.btn-cancel {
-  background: #d63031;
-}
-
-/* Tombol lihat rincian */
 td button {
   background: #607d8b;
 }
@@ -77,9 +164,7 @@ td button:hover {
   background: #546e7a;
 }
 
-/* ============================
-   MODAL STYLE (MODERN)
-============================ */
+/* ======== MODAL STYLE ======== */
 .modal {
   display: none;
   position: fixed;
@@ -111,39 +196,18 @@ td button:hover {
   color: #2c3e50;
 }
 
-/* Table inside modal */
-.modal-box table {
-  width: 100%;
-  border-collapse: collapse;
-}
+.modal-box table { width: 100%; border-collapse: collapse; }
+.modal-box th { background: #4CAF50; padding: 10px; font-size: 14px; }
+.modal-box td { padding: 8px; border-bottom: 1px solid #ddd; }
 
-.modal-box th {
-  background: #4CAF50;
-  padding: 10px;
-  font-size: 14px;
-}
-
-.modal-box td {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Qty input */
 .modal-box input[type="number"] {
-  padding: 5px;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-  width: 55px;
-  text-align: center;
-  font-size: 14px;
+  padding: 5px; border: 1px solid #aaa; border-radius: 6px;
+  width: 55px; text-align: center; font-size: 14px;
 }
 
-/* Button inside modal */
 .modal-box button {
-  padding: 6px 12px;
-  background: #e74c3c;
-  border-radius: 4px;
-  font-size: 13px;
+  padding: 6px 12px; background: #e74c3c;
+  border-radius: 4px; font-size: 13px;
 }
 
 .btn-close {
@@ -155,14 +219,14 @@ td button:hover {
   font-size: 14px;
 }
 
-/* Animation */
+/* ======== ANIMATION ======== */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; }
 }
